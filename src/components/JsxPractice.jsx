@@ -30,6 +30,7 @@ export default class JsxPractice extends Component {
                 <button onClick={ ()=> console.log( this.render() ) } >打印render后的内容</button>
             </div>
         )
+        /** reactElement为一个对象，reactElement.props.children是标签内部的元素集合 */
         console.log(reactElement.props.children, 'react ')
         const { children } = reactElement.props;
         /**
@@ -43,6 +44,7 @@ export default class JsxPractice extends Component {
             return current;
          }, [])
 
+        //  👀
          const flatChildren = React.Children.toArray(children);
 
          /**
@@ -56,7 +58,7 @@ export default class JsxPractice extends Component {
             return current;
          }, [])
 
-
+        //  👀
          const newChildren = [];
          React.Children.forEach(flatChildren, (item) => {
              if(React.isValidElement(item)) newChildren.push(item)
@@ -69,7 +71,7 @@ export default class JsxPractice extends Component {
          const sayGoodbye = React.createElement('div', null, 'goodbye')
          temElement.push(sayGoodbye);
 
-
+        //  👀 
          const lastChildren = React.createElement('div', { className: 'last' }, 'goodbye')
          newChildren.push(lastChildren);
 
@@ -80,6 +82,7 @@ export default class JsxPractice extends Component {
 
         //  console.log(temElement, 'tem')
         //  将newChildren插入到reactElement的props中
+        // 👀
          const newReactElement = React.cloneElement(reactElement, {}, ...newChildren)
 
 
