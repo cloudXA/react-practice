@@ -22,16 +22,15 @@ export default class JsxPractice extends Component {
                 { /* 数组节点类型 */ }
                 { this.toLearn.map(item=> <div key={item} >let us learn { item } </div> ) } 
                 { /* 组件类型 */ }
-                <TextComponent/>  
+                <TextComponent content={this.status}/>  
                 { /* 三元运算 */  }
-                { this.status ? <TextComponent /> :  <div>三元运算</div> }  
+                { this.status ? <TextComponent content={this.status} /> :  <div>三元运算</div> }  
                 { /* 函数执行 */ } 
                 { this.renderFoot() }  
                 <button onClick={ ()=> console.log( this.render() ) } >打印render后的内容</button>
             </div>
         )
         /** reactElement为一个对象，reactElement.props.children是标签内部的元素集合 */
-        console.log(reactElement.props.children, 'react ')
         const { children } = reactElement.props;
         /**
          * 1. children扁平化处理

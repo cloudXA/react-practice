@@ -13,6 +13,6 @@
     * 4. 克隆新的元素节点并渲染
        //  将newChildren插入到reactElement的props中
        const newReactElement = React.cloneElement(reactElement, {}, ...newChildren)
-
+*  Component
   
  
