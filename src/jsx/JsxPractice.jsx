@@ -32,6 +32,7 @@ export default class JsxPractice extends Component {
         )
         /** reactElement为一个对象，reactElement.props.children是标签内部的元素集合 */
         const { children } = reactElement.props;
+        console.log(reactElement, 'reactElement')
         /**
          * 1. children扁平化处理
          */

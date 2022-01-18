@@ -5,8 +5,8 @@ import Children from './children'
 
 const Parent = () => {
     
-const [parentMessage, setParentMessage] = useState('');
-const [childMessage, setChildMessage] = useState('');
+    const [parentMessage, setParentMessage] = useState('');
+    const [childMessage, setChildMessage] = useState('');
 
     const handleChange = (e) => {
         const value = e.target.value;
