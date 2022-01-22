@@ -46,7 +46,35 @@
             * setState有专门监听state变化的回调函数callback,可获取最新的state;函数组件可以通过setNumber(current => current + 1 )方式和useEffect来执行state变化引起的副作用。
             * setState在底层处于逻辑上和老state进行合并处理，而useState更倾向于重新赋值。
 
-
+* #### props应用
+    * props定义：1. 在React应用中写的子组件：(1.1 函数组件FunComponent 1.2 类组件 ClassComponent) 2. 父组件绑定在他们标签的属性/方法(特殊的属性ref、key除外)
+    * props类型：
+        * 1. 子组件渲染数据源（来自父组件的state）
+        * 2. 通知父组件的回调函数
+        * 3. 单纯的组件传递
+        * 4. 渲染函数
+        * 5. render渲染函数 和4区别是放在children属性上
+        * 6. renderComponent 和3的差别是放在children属性上
+    * props通信机制：
+        * 父组件的props可以把数据层传递给子组件去渲染消费，另一方面可以通过props中的callback来向父组件传递信息。
+    * props更新机制：
+        * props可以作为组件是否更新的重要准则，变化即更新，有PureComponent，memo性能优化方案。(TODO:)
+    * props插槽：
+        * 把组件的闭合标签的插槽转化为Children属性
+    * 监听props改变：
+        * 类组件中getDerivedStateFromProps监听props改变
+        * 函数组件中，useEffect监听props改变
+    * props设计模式：
+        * props插槽组件，props.children直接渲染, React.cloneElement强化props
+        * render props模式
+        * 混合模式，组件 + render 
+    * props抽象；
+        * 混入props
+        * 抽离props
+    * 注入props
+        * 显示注入props
+        * 隐式注入props React.cloneElement()
+    * props实践：实践体会在组件中。。。
 
   
  

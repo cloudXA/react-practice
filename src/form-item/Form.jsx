@@ -83,6 +83,6 @@ export default class Form extends Component {
  *      2. React.Children.forEach()可以作为批量处理组件，添加属性值等等
  *          2.1. 添加属性有state基于formItem属性名对应的值
  *          2.1. 添加方法名，用于内部向外改变state状态
- *      
+ *      3. React.cloneElement(child, {name: value}, child.props.children) 使用深拷贝添加属性、嵌套的标签与组件
  * 
  */
