@@ -1,9 +1,10 @@
 import React from 'react';
 
 
-const Item = ({ key, name, url, description }) => {
+const Item = ({ ele }) => {
+  const { name, description, url } = ele;
   return <div>
-      <div key={key}>
+      <div >
         {name} --- {description} 
         <img src={url} alt="图片" width={100} height={100} />
       </div>
