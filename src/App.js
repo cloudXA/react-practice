@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import JsxPractice from './jsx/JsxPractice';
 import Communicate from './communicate/parent.jsx';
 import FormContainer from './form-item/index';
+import SimulateLifeCycle from './life-cycle/index';
 import './App.css';
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       {/* <JsxPractice />
       <Communicate /> */}
-      <FormContainer />
+      {/* <FormContainer /> */}
+      <SimulateLifeCycle />
     </div>
   );
 }
