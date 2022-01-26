@@ -75,6 +75,61 @@
         * 显示注入props
         * 隐式注入props React.cloneElement()
     * props实践：实践体会在组件中。。。
+* ### 生命周期
+    * React在调和阶段(render)会深度遍历React fiber树，目的发现不同(diff)，不同的地方就是接下来需要更新的地方，对于变化的组件，就会执行render函数。在一次调和过程完成之后，就到了commit阶段，commit会修改真是的DOM节点。
+    * 生命周期示意图：
+    初始化阶段：
+    ![](./images/ark.awebp)
+    * 更新阶段：
+    ![](./images/update.awebp)
+    * 销毁阶段：
+    ![](./images/destroy.awebp)
+    * 总览
+    ![](./images/layout.awebp)
+    * ### React各阶段生命周期能做什么
+    * #### constructor
+        * 初始化state,对类组件做处理，
+        * getDerivedStateFromProps(nextProps, prevState)对props进行格式化，过滤，返回值作为新的state合并到state中，供视图渲染消费。访问不到this
+        * render里面使用createElement创建元素、cloneElement克隆元素、React.children遍历children
+        * getSnapshotBeforeUpdate(prevProps, preState)获取更新亲的DOM状态，返回一个snapShot(快照)，传递给componentDidUpdate作为第三个参数。
+        * componentDidUpdate(prevPros, prevState, snapshot) snapshot为getSnapshotBeforeUpdate返回的快照。
+        * componentDidMount在初始化阶段，而componentDidUpdate在组件更新状态。
+        * shouldComponentUpdate(newProps, newState)用于性能优化，返回值决定时候重新渲染的类组件。
+        * componentWillUnmount组件销毁唯一执行的。清除造成内存泄漏的定时器，延时器，或者一些事件监听器。
+    * #### 函数组件生命周期替代方案
+    ```
+    useEffect(() => {
+        return destroy
+    }, dep)
+    ```
+    *  componentDidMount 替代方案
+    ```
+    React.useEffect(()=>{
+        /* 请求数据 ， 事件监听 ， 操纵dom */
+    },[])  /* 切记 dep = [] */
+    ```
+    * componentWillUnmount 替代方案
+    ```
+     React.useEffect(()=>{
+            /* 请求数据 ， 事件监听 ， 操纵dom ， 增加定时器，延时器 */
+            return function componentWillUnmount(){
+                /* 解除事件监听器 ，清除定时器，延时器 */
+            }
+    },[])/* 切记 dep = [] */
+    ```
+    *  componentWillReceiveProps 代替方案
+    ```
+    React.useEffect(()=>{
+        console.log('props变化：componentWillReceiveProps')
+    },[ props ])
+
+    ```
+    * componentDidUpdate 替代方案
+    ```
+    React.useEffect(()=>{
+        console.log('组件更新完成：componentDidUpdate ')     
+    }) /* 没有 dep 依赖项 */
+    ```
 
   
  
