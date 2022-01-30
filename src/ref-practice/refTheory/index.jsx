@@ -20,3 +20,4 @@ export default class Index extends Component {
         </div>;
     }
 }
+// 在commit阶段执行ref

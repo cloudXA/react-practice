@@ -14,7 +14,7 @@ class Index extends Component {
             button: this.button // 给button dom元素，绑定给ref button 属性
         }
     }
-
+    
     render() {
         return <div>
             <button ref={ (button) => this.button = button }>点击</button>
@@ -24,3 +24,4 @@ class Index extends Component {
 }
 
 export default React.forwardRef((props, ref) => <Index {...props} forwardRef={ref}  />)
+
