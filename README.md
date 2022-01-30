@@ -130,6 +130,22 @@
         console.log('组件更新完成：componentDidUpdate ')     
     }) /* 没有 dep 依赖项 */
     ```
-
+### Ref
+    * 类组件React.createRef
+    * 函数组件useRef
+* #### 类组件获取Ref三种方式
+    * this.refs ref标记在标签为字符串,(已废弃)
+    * ref属性是一个函数 ` <div ref={(node)=> this.currentDom = node }  >Ref模式获取元素或组件</div>`
+    * ref属性是一个ref对象，createRef()
+* #### ref高阶用法
+    * forwardRef转发Ref
+    * 合并转发ref
+    * 高阶组件转发
+* #### ref实现组件通信
+    * 类组件ref
+    * 函数组件forwardRef + useImperativeHandle
+    * 函数组件缓存数据
+* #### demo
+    * 以上总结都存在于demo细节中...
   
  
