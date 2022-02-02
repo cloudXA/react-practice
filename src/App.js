@@ -10,6 +10,7 @@ import HocRef from './ref-practice/HocRef';
 import RefCommunicate from './ref-practice/refCommunicate/Father';
 import RefFather from './ref-practice/refCommunicate2/Father';
 import RefTheory from './ref-practice/refTheory';
+import MovieList from './context/movieContext';
 import './App.css';
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
       {/* <HocRef /> */}
       {/* <RefCommunicate /> */}
       {/* <RefFather /> */}
-      <RefTheory />
+      {/* <RefTheory /> */}
+      <MovieList />
     </div>
   );
 }
