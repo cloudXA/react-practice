@@ -11,6 +11,7 @@ import RefCommunicate from './ref-practice/refCommunicate/Father';
 import RefFather from './ref-practice/refCommunicate2/Father';
 import RefTheory from './ref-practice/refTheory';
 import MovieList from './context/movieContext';
+import ReduxPractice from './redux-practice/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrease, increase } from './actions';
 import './App.css';
@@ -36,14 +37,15 @@ function App() {
       {/* <RefCommunicate /> */}
       {/* <RefFather /> */}
       {/* <RefTheory /> */}
-      <MovieList />
+      {/* <MovieList /> */}
+      <ReduxPractice />
       
-      <h1>count:{counter}</h1>
+      {/* <h1>count:{counter}</h1>
       <button onClick={() => dispatch(increase(5))}>++</button>
       <button onClick={() => dispatch(decrease())}>--</button>
       {
         isLogged ? <h3> not see</h3> : ''
-      }
+      } */}
     </div>
   );
 }

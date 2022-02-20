@@ -3,14 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import allReducer from './reducers/index';
 
-let store = createStore(allReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+// 中间件
+import middleware from './redux-practice/middleware/logMiddleware';
 
+
+import inforReducer from './redux-practice/reducers/inforReducer';
+
+import numberReducer from './redux-practice/reducers//numberReducer';
+
+const reducer = combineReducers({ info: inforReducer, number: numberReducer });
+
+
+// 声明在createStore的info number要和 reducer的info number 一一对应，保证在reducer里的state为声明在createStore的state
+let store = createStore(reducer, {
+  number: 1,
+  info: {
+    name: null
+  }
+}, applyMiddleware(middleware))
+
+export default store;
 
 
 
