@@ -1,37 +1,50 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import store from '../index';
+import { connect } from 'react-redux';
 
 const ReducePractice = props => {
   const [state, changeState] = useState(store.getState());
 
-  useEffect(() => {
-    const unSubscribe = store.subscribe(() => {
-      changeState(store.getState())
-    })
-    return () => {
-      return unSubscribe()
-    };
-  }, []);
+  // useEffect(() => {
+  //   const unSubscribe = store.subscribe(() => {
+  //     changeState(store.getState())
+  //   })
+  //   return () => {
+  //     return unSubscribe()
+  //   };
+  // }, []);
+
+  const { info, number, addLike, setTitle } = props;
+
+
 
   return (
     <div>
-      {state.number}
-      <p>{state.info.name ? 'hello, my name is ' + state.info.name : 'what is your name'} { state.info.mes ? state.info.mes : 'what do you say?'} <br /></p>
+      {number}
+      <p>{info.name ? 'hello, my name is ' + info.name : 'what is your name'} { info.mes ? info.mes : 'what do you say?'} <br /></p>
 
-      《React进阶实践指南》 👍{state.number}<br />
+      《React进阶实践指南》 👍{number}<br />
 
       
 
-      <button onClick={() => {store.dispatch({ type: 'ADD'})}}>点赞</button>
-      <button onClick={() => {store.dispatch({ type: 'SET', payload: { name: 'alien', mes: 'let us learn React!'}})}}>修改标题</button>
+      <button onClick={() => { return addLike()}}>点赞</button>
+      <button onClick={() => { return setTitle('let us learn react ')}}>修改标题</button>
     </div>
   )
 }
 
 ReducePractice.propTypes = {}
 
-export default ReducePractice
+const mapStateToProps = state => ({ number: state.number, info: state.info })
+
+const mapDispatchToProps = dispatch => ({ addLike: () => dispatch({ type: 'ADD' }), setTitle: (mes) => dispatch({ type: 'SET', payload: { mes: mes }})})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReducePractice)
+
+/**
+ * mapStateToProps替代了redux的subscribe
+ */
 
 /** 
  * store：存在 dispatch  getState replaceReducer subscribe 
