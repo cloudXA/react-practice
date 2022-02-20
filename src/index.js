@@ -16,6 +16,9 @@ import inforReducer from './redux-practice/reducers/inforReducer';
 
 import numberReducer from './redux-practice/reducers//numberReducer';
 
+import aReducer from './redux-commuaction/reducers/a'
+import bReducer from './redux-commuaction/reducers/b'
+
 const reducer = combineReducers({ info: inforReducer, number: numberReducer });
 
 
@@ -26,6 +29,11 @@ let store = createStore(reducer, {
     name: null
   }
 }, applyMiddleware(middleware))
+
+const commuStore = createStore(combineReducers({a: aReducer, b: bReducer }), {
+  a: { compAsay: 'a'},
+  b: { compBsay: 'b'}
+})
 
 export default store;
 
@@ -72,7 +80,7 @@ export default store;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={commuStore}>
       <App />
     </Provider>
   </React.StrictMode>,
